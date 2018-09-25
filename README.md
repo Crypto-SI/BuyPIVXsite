@@ -1,2 +1,2 @@
 # BuyPIVXsite
-Code for Buy PIVX dot site
+Code for Buy PIVX [dot] site
