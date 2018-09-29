@@ -1,0 +1,94 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Buttons
+ *
+ */
+
+
+@include module-function(button);
+
+
+.button {
+    @include cursor(pointer);
+    @include float();
+    @include transition(background border-color box-shadow color);
+    border-radius: border-radius(300);
+    line-height: divide(size(), font-size());
+    padding: button(spacer default);
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Modifiers
+     *
+     */
+
+    &--center {
+        text-align: center;
+    }
+
+    &--curved {
+        border-radius: border-radius(800);
+    }
+
+    // Icons Require Even Padding
+    &--icon {
+        border-radius: border-radius(900);
+        padding: first(button(spacer default));
+    }
+
+    &--badge,
+    &--small {
+        font-size: font-size(300);
+        line-height: divide(size(), font-size(300));
+    }
+
+    @each $size in 'badge' 'large' 'small' {
+        &--#{$size}{
+            padding: button(spacer $size);
+
+            &.button--icon {
+                padding: first(button(spacer $size));
+            }
+        }
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Children
+     *
+     */
+
+    .icon {
+        @include margin-horizontal(button(spacer icon default));
+    }
+
+    &--center .icon {
+        @include margin-horizontal(button(spacer icon small));
+        display: inline-block;
+        float: unset;
+        vertical-align: top;
+    }
+
+    &--icon .icon {
+        @include margin-horizontal(0);
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Import Children/Modifiers
+     *
+     */
+
+    @import
+        'button-colors',
+        'button-group',
+        'button-scroller'
+    ;
+}

@@ -1,0 +1,30 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+
+        # Disable Directory Slashes To Prevent 'Directory Hints'
+        DirectorySlash Off
+    </IfModule>
+
+    RewriteEngine On
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes
+    RewriteRule ^(.*)/$             /$1         [L,R=301]
+
+    # Override All favicon.ico/robots.txt Requests
+    RewriteRule ^(.*)favicon.ico$   favicon.ico [L,NC]
+    RewriteRule ^(.*)robots.txt$    robots.txt  [L,NC]
+
+    # Whitelist Files - Route Remainder To Front Controller
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^                   index.php   [L]
+</IfModule>
+# Use PHP71 as default
+AddHandler application/x-httpd-php71 .php
+<IfModule mod_suphp.c>
+    suPHP_ConfigPath /opt/php71/lib
+</IfModule>

@@ -1,0 +1,75 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Horizontally Scrolling Links
+ *
+ *  Import Within Link Stylesheet To Retain Class Inheritance
+ *
+ */
+
+&-scroller {
+    @include grid(d12);
+    overflow: hidden;
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Children
+     *
+     */
+
+    .link {
+        font-weight: font-weight(500);
+        margin: 0 last(link(spacer default)) 0 0;
+
+
+        &:last-child,
+        &--full {
+            margin: 0;
+        }
+
+
+        // Rounded Bottom Border
+        &::after {
+            @include position(absolute, null null 0 0);
+            border-color: inherit;
+            border-radius: link(border radius) link(border radius) 0 0;
+            border-style: solid;
+            content: '';
+            display: none;
+
+            border-width: link(border size default) 0 0;
+            height: link(border size default);
+            width: 100%;
+        }
+
+        @include state(active) {
+            &::after {
+                display: block;
+            }
+        }
+
+        &--badge,
+        &--small {
+            &::after {
+                border-width: link(border size small) 0 0;
+                height: link(border size small);
+            }
+        }
+
+        &--large,
+        &--tab {
+            &::after {
+                border-width: link(border size large) 0 0;
+                height: link(border size large);
+            }
+        }
+
+        @each $size in 'badge' 'small' 'large' 'tab' {
+            &--#{$size} {
+                margin: 0 last(link(spacer #{$size})) 0 0;
+            }
+        }
+    }
+}

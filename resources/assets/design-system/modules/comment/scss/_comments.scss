@@ -1,0 +1,87 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Comments Container
+ *
+ */
+
+.comments {
+    @include grid(d12);
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Submit Comment
+     *
+     */
+
+    &-submit {
+
+        &.field {
+            width: 100%;
+
+            // Modifiers
+            @include color-modifiers(color, color-keys(brand), '&.field--{r} .comments-submit-footer-title b');
+
+            // '300' Is Default Padding Of Field Mask
+            .field-text .field-mask {
+                padding-bottom: (size(600) * 2) + size(300);
+            }
+
+            @include state(hover) {
+                opacity: 1;
+            }
+        }
+
+        &-close {
+            float: right;
+            margin: (- size());
+            z-index: 1;
+
+            .icon {
+                @include size(size(300));
+                margin: size(100) / 2;
+            }
+        }
+
+        &-footer {
+            @include float();
+            background: color('grey');
+            border-radius: 0 0 border-radius() border-radius();
+            margin: ((- size(600) * 2) - 1px) 0 0 1px;
+            padding: size(200);
+            width: calc(100% - 2px);
+            z-index: 0;
+
+            &-title {
+                @include float();
+                @include truncate();
+                color: color(text 500);
+                line-height: size(800) / font-size();
+                max-width: calc(100% - #{size(800) * 5.5});
+            }
+
+            .button {
+                float: right;
+                margin: 0 0 0 size(200);
+            }
+
+            @include breakpoint (max-width, 600px) {
+                &-title {
+                    display: none;
+                }
+
+                .button {
+                    margin: 0;
+                    text-align: center;
+                    width: calc(50% - #{size(100)});
+
+                    &:last-child {
+                        float: left;
+                    }
+                }
+            }
+        }
+    }
+}

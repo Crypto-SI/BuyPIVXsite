@@ -1,0 +1,57 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Menus Container
+ *
+ */
+
+.menus {
+    @include position(fixed, full);
+    @include transition(opacity);
+    background: color('black', 0.48);
+    cursor: pointer;
+    float: unset;
+    overflow: hidden;
+    z-index: 7;
+
+    @include state(not-active) {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Modifiers
+     *
+     */
+
+    &--grey {
+        background: color('grey', 0.48);
+    }
+
+    &--transparent {
+        background: transparent;
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Children
+     *
+     */
+
+    &-close {
+        @include position(absolute, size(100) size(100) null null);
+        color: color('white');
+        pointer-events: none;
+        z-index: 0;
+
+        // Modifiers
+        .menus--grey & {
+            color: color(text 500);
+        }
+    }
+}

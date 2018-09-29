@@ -1,0 +1,13 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Alert Notifications
+ *
+ */
+
+.alerts {
+    @include position(fixed, full);
+    pointer-events: none;
+    z-index: 9;
+}
+ 

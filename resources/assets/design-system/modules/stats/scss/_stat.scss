@@ -1,0 +1,51 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Stat List
+ *
+ */
+
+.stat {
+    @include float();
+    color: color(text 300);
+    font-size: font-size();
+    font-weight: font-weight(300);
+    line-height: size() / font-size();
+
+    &:not(:last-child) {
+        padding: 0 size(400) 0 0;
+ 
+        &::after {
+            @include circle(size(100));
+            @include position(absolute, vertical);
+            background: color(text);
+            content: "";
+            right: size(100) + (size(100) / 2);
+        }
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Modifiers
+     *
+     */
+
+    &--small {
+        font-size: font-size(300);
+        line-height: size() / font-size(300);
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Import Children/Modifiers
+     *
+     */
+
+    @import
+        'stat-group'
+    ;
+}

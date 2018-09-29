@@ -1,0 +1,70 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Tooltips
+ *
+ */
+
+
+@include module-function(tooltip);
+
+
+.tooltip {
+
+
+    @include state(active) {
+        z-index: 9;
+
+        // Add Invisible Box To Increase Activation/Hover Area
+        // - Doesn't Need To Be Managed Through A Token
+
+        &::after {
+            @include position(absolute, center);
+            @include size(calc(100% + #{size()}));
+            content: "";
+            z-index: -1;
+        }
+
+        .tooltip-content--menu::before {
+            @include position(absolute, horizontal);
+            @include size(calc(100% + #{size(800)}), calc(100% + #{size(800) / 2}));
+            content: "";
+            top: 0;
+            z-index: -1;
+        }
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Tooltip Content Wrapper
+     *
+     *  Wrapper Is Used To Simplify Animation, Positioning And
+     *  Visibility Of Tooltip Content
+     *
+     *  Tooltips Are Activated By JS To Simplify CSS Selectors:
+     *  - On 'hover' By Default
+     *  - On 'click' When Using "data-trigger='toggle'"
+     *
+     */
+
+    &-content {
+        @include transition(transform opacity);
+
+
+        // Import Children/Modifiers
+        @import
+            'tooltip-menu',
+            'tooltip-message',
+            'tooltip-positions'
+        ;
+    }
+
+    @include state(not-active) {
+        .tooltip-content {
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+}

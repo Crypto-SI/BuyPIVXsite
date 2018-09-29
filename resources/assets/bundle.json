@@ -1,0 +1,38 @@
+{
+    "app": [
+        "design-system/support",
+        "design-system/tokens",
+
+        "pivx/tokens",
+
+        "design-system/base",
+
+        "design-system/modules/alerts",
+        "design-system/modules/banners",
+        "design-system/modules/bubbles",
+        "design-system/modules/buttons",
+        "design-system/modules/cards",
+        "design-system/modules/comment",
+        "design-system/modules/fields",
+        "design-system/modules/icons",
+        "design-system/modules/layout",
+        "design-system/modules/links",
+        "design-system/modules/lists",
+        "design-system/modules/media",
+        "design-system/modules/menus",
+        "design-system/modules/modals",
+        "design-system/modules/page-headers",
+        "design-system/modules/progress",
+        "design-system/modules/scrollers",
+        "design-system/modules/states",
+        "design-system/modules/stats",
+        "design-system/modules/tooltips",
+
+        "pivx/modules",
+        "pivx/pages",
+        "pivx/templates"
+    ],
+    "dev": [
+        "design-system/modules/development"
+    ]
+}

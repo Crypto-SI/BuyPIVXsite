@@ -1,0 +1,18 @@
+@import
+    // First Set Of Tokens
+    'border-radius',
+    'breakpoints',
+    'colors',
+    'font-sizes',
+    'font-weights',
+    'line-heights',
+    'sizes',
+    'states',
+    'text-crop',
+    'token-weight',
+    'transition',
+
+    // Second Set Of Tokens Dependent On Functions, Mixins Or
+    // Tokens Listed Above. Ex: color(), size(), etc.
+    'subtokens/_manifest'
+;

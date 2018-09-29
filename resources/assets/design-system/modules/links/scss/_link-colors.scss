@@ -1,0 +1,187 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Link Color Variations
+ *
+ *  Import Within Link Stylesheet To Retain Class Inheritance
+ *
+ */
+
+
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Basic Link Colors
+ *  - Text Color Is Used By Default
+ *  - White Modifier Can Be Used Independently But It's Typically Paired
+ *    With A Brand Modifier.
+ *
+ */
+
+& {
+    border-color: link(color text default);
+    color: link(color text default);
+
+    @include state(hover) {
+        border-color: link(color text highlight);
+        color: link(color text highlight);
+    }
+
+    @include state(active pressed) {
+        border-color: link(color text pressed);
+        color: link(color text pressed);
+    }
+
+
+    &--inline {
+        color: link(color text pressed);
+    }
+
+    &--white {
+        border-color: link(color 'white' default);
+        color: link(color 'white' default);
+
+        @include state(hover) {
+            border-color: link(color 'white' highlight);
+            color: link(color 'white' highlight);
+        }
+
+        @include state(active pressed) {
+            border-color: link(color 'white' pressed);
+            color: link(color 'white' pressed);
+        }
+    }
+}
+
+
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Brand Colors
+ *
+ */
+
+@each $color in color-keys(brand) {
+    $default: color($color 400);
+
+    $hover:   color($color 300);
+    $pressed: color($color 500);
+
+    &--#{$color} {
+
+
+        // Apply Modifier Color To Interactive States Only
+        @include state(hover) {
+            border-color: $hover;
+            color: $hover;
+        }
+
+        @include state(active pressed) {
+            border-color: $pressed;
+            color: $pressed;
+        }
+
+
+        // Apply Modifier Color On Active State Only
+        // - Override 'hover'/'pressed' States
+        &.link--active {
+            @include state(hover) {
+                border-color: link(color text highlight);
+                color: link(color text highlight);
+            }
+
+            @include state(pressed) {
+                border-color: link(color text pressed);
+                color: link(color text pressed);
+            }
+
+            &.link--white {
+                @include state(hover) {
+                    border-color: link(color 'white' highlight);
+                    color: link(color 'white' highlight);
+                }
+
+                @include state(pressed) {
+                    border-color: link(color 'white' pressed);
+                    color: link(color 'white' pressed);
+                }
+            }
+        }
+
+
+        // Apply Modifier Color Across All States On Border Only
+        // - Original Border Uses A Pseudo Element To Round The Border;
+        //   Display Property Of The Border Determines When It Is
+        //   Visible.
+        // - Override Font Color Of ALL States
+        &.link--border {
+            border-color: $default;
+
+            @include state(hover) {
+                color: link(color text highlight);
+            }
+
+            @include state(active pressed) {
+                color: link(color text pressed);
+            }
+
+            &.link--white {
+                @include state(hover) {
+                    color: link(color 'white' highlight);
+                }
+
+                @include state(pressed) {
+                    color: link(color 'white' pressed);
+                }
+            }
+        }
+
+
+        // Apply Color Across All States
+        // - 'default' State Is The Only Remaining State To Override
+        &.link--color {
+            border-color: $default;
+            color: $default;
+        }
+
+
+        // Apply Color To Active Link Border + Icon
+        &.link--icon {
+            @include state(hover) {
+                border-color: link(color text highlight);
+                color: link(color text highlight);
+            }
+
+            @include state(active) {
+                color: link(color text pressed);
+            }
+
+            @include state(pressed) {
+                border-color: link(color text pressed);
+                color: link(color text pressed);
+            }
+
+            &.link--white {
+                @include state(hover) {
+                    border-color: link(color 'white' highlight);
+                    color: link(color 'white' highlight);
+                }
+
+                @include state(active) {
+                    color: link(color 'white' pressed);
+                }
+
+                @include state(pressed) {
+                    border-color: link(color 'white' pressed);
+                    color: link(color 'white' pressed);
+                }
+            }
+
+            @include state(active) {
+                .icon {
+                    color: $pressed;
+                }
+            }
+        }
+    }
+}

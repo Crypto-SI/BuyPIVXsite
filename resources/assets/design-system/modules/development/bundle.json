@@ -1,0 +1,7 @@
+{
+    "js": [
+        "js/errors.js",
+        "js/reloadcss.js"
+    ],
+    "scss": "scss/_manifest.scss"
+}

@@ -1,0 +1,134 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Comment Thread
+ *
+ */
+
+.comment {
+    @include grid(d12);
+    border-color: color(text, 0.12);
+    border-style: solid;
+    border-width: 0;
+    margin: size() 0;
+    padding: 0 0 0 size(600);
+
+
+    .comments-submit + & {
+        margin-top: size(800);
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Children
+     *
+     */
+
+    &-thread {
+        @include cursor(pointer);
+        height: 100%;
+        left: (- size(100));
+        position: absolute;
+        top: 0;
+
+        &::after {
+            @include float();
+            @include size(2px, 100%);
+            background: color(text 500, 0.12);
+            border-radius: border-radius();
+            content: "";
+            margin: 0 size(100);
+            top: 0;
+        }
+
+        @include state(hover) {
+            &::after {
+                background: color(text 500, 0.4);
+            }
+        }
+
+        @include state(pressed) {
+            &::after {
+                background: color(text 500, 0.6);
+            }
+        }
+    }
+
+    @include state(hover) {
+        .comment-thread {
+            @include state(default) {
+                &:after {
+                    background: color(text 500, 0.24);
+                }
+            }
+        }
+    }
+
+    &-header,
+    &-footer {
+        @include grid(d12);
+    }
+
+    &-author,
+    &-detail {
+        @include float();
+        font-size: font-size(300);
+        height: size(500);
+        line-height: size(500) / font-size(300);
+    }
+
+    &-author {
+        font-weight: font-weight(500);
+    }
+
+    &-badge {
+        margin: 0 0 0 size(200);
+        padding: (size(100) / 2) size(100);
+    }
+
+    &-details {
+        @include float();
+    }
+
+    &-detail {
+        color: color(text 300, 0.8);
+        padding: 0 0 0 size(200);
+
+        &:not(:last-child) {
+            padding: 0 0 0 size(400);
+
+            &::after {
+                @include circle(size(100));
+                @include position(absolute, vertical);
+                background: color(text);
+                content: "";
+                left: size(100) + (size(100) / 2) + 1px;
+            }
+        }
+    }
+
+    // TODO Replace With Line Height Function Returning 1.4
+    &-text {
+        @include grid(d12);
+        line-height: 1.4;
+        margin: size(200) 0 0;
+        max-width: breakpoint(tablet width);
+    }
+
+    &-reply {
+        color: color(text 300);
+        font-weight: font-weight(500);
+        margin: size(100) 0 (- size(100) - (size(100) / 2));
+
+        + form {
+            margin: size() 0 0;
+        }
+    }
+
+    .comment {
+        margin-bottom: 0;
+        padding-left: size(600);
+    }
+}

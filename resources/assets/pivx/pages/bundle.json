@@ -1,0 +1,9 @@
+{
+    "js": [
+        "home/js/form.js"
+    ],
+    "scss": [
+        "home/scss/_manifest.scss",
+        "pages/scss/_manifest.scss"
+    ]
+}

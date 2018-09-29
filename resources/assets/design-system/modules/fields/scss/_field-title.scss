@@ -1,0 +1,60 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Field Titles
+ *
+ *  Import Within Field Stylesheet To Retain Class Inheritance
+ *
+ */
+
+&-title {
+    @include grid(d12);
+    color: field(color);
+    font-size: field(label font-size);
+    line-height: size() / field(label font-size);
+    word-wrap: break-word;
+    z-index: 1;
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Modifiers
+     *
+     */
+
+    .field--horizontal & {
+        clear: unset;
+        line-height: size() / field(label font-size);
+        margin: 0 size(300) 0 0;
+        padding: field(text spacer default) 0;
+        width: auto;
+    }
+
+    .field--required & {
+        &::after {
+            @include circle(6px);
+            @include position(absolute, vertical);
+            content: "";
+            right: 0;
+        }
+    }
+
+    // Use Modifier Color On Default Required Circle Color
+    @include color-modifiers(background, color-keys(brand), '.field--{r} &::after');
+
+    // Active Title Color State
+    @include color-modifiers(color, color-keys(brand), '#{state(active, '.field--{r}')} &--color');
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Children
+     *
+     */
+
+    .icon {
+        @include margin-horizontal(field(label spacer icon));
+    }
+}

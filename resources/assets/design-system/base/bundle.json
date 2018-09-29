@@ -1,0 +1,9 @@
+{
+    "js": [
+        "js/deactivate.js",
+        "js/activate.js",
+        "js/template.js",
+        "js/toggle.js"
+    ],
+    "scss": "scss/_manifest.scss"
+}

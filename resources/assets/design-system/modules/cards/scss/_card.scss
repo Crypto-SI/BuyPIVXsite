@@ -1,0 +1,28 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Individual Card Shell
+ *
+ */
+
+
+@include module-function(card);
+
+
+.card {
+    @include box(true);
+    @include float();
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Import Children/Modifiers
+     *
+     */
+
+    @import
+        'card-column',
+        'card-scroller'
+    ;
+}

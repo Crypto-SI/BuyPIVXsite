@@ -1,0 +1,75 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Page Headers
+ *
+ */
+
+
+@include module-function(page-header);
+
+
+.page-header {
+
+    &,
+    &-category,
+    &-subtitle {
+        @include grid(d12);
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Children
+     *
+     */
+
+    &-category {
+        @include line-height(font-size(), top);
+        @include uppercase();
+        font-weight: font-weight(500);
+        margin: 0 0 page-header(spacer category default) 0;
+
+        // Modifiers
+        @include color-modifiers(color, color-keys(brand));
+
+        &--small {
+            font-weight: font-weight();
+            margin: 0 0 page-header(spacer category small) 0;
+        }
+    }
+
+    &-subtitle {
+        @include font-size(font-size(500), bottom);
+        margin: page-header(spacer subtitle) 0 0 0;
+
+        // Modifiers
+        &--small {
+            @include font-size(font-size(), bottom);
+        }
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Tags/Badges
+     *
+     *  Creating A Seperate '.badge' Or '.tag' Module Wasn't Worth The Effort
+     *  Since The Styles Are Exactly The Same As '.button--badge';
+     *
+     *  Use '.button--static' Modifier When Badges/Tags Are Not Links
+     *
+     */
+
+    .button-group {
+        &:first-child {
+            margin: 0 0 page-header(spacer button-group);
+        }
+
+        &:last-child {
+            margin: page-header(spacer button-group) 0 0;
+        }
+    }
+}

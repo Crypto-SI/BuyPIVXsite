@@ -1,0 +1,52 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Grid-Like Video List ( Similar To Youtube )
+ *
+ *  Import Within Video Stylesheet To Retain Class Inheritance
+ *
+ */
+
+&-grid {
+    @include grid(d12);
+    display: flex;
+    flex-wrap: wrap;
+    margin: (- media(spacer grid top)) 0 0 0;
+    width: calc(100% + #{media(spacer grid right)});
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Children
+     *
+     */
+
+    .media {
+        margin: media(spacer grid top) media(spacer grid right) 0 0;
+
+        @include breakpoint(min-width, 1300px) {
+            @include items-per-row(6, media(spacer grid right));
+        }
+
+        @include breakpoint(between-width, 1100px 1300px) {
+            @include items-per-row(5, media(spacer grid right));
+        }
+
+        @include breakpoint(between-width, 800px 1100px) {
+            @include items-per-row(4, media(spacer grid right));
+        }
+
+        @include breakpoint(between-width, 600px 800px) {
+            @include items-per-row(3, media(spacer grid right));
+        }
+
+        @include breakpoint(between-width, 400px 600px) {
+            @include items-per-row(2, media(spacer grid right));
+        }
+
+        @include breakpoint(max-width, 400px) {
+            @include items-per-row(1, media(spacer grid right));
+        }
+    }
+}

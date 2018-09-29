@@ -1,0 +1,154 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Link Menu
+ *  - Typically Used For Tooltip Menu Dropdowns's, Off Canvas Menu's, etc
+ *
+ *  Import Within Link Stylesheet To Retain Class Inheritance
+ *
+ */
+
+&-menu {
+    @include grid(d12);
+    padding: link(spacer menu) 0;
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Modifiers
+     *
+     */
+
+    &--black {
+        background: color('black');
+
+        .link {
+            @include state(hover) {
+                background: color('black' 300, 0.64);
+            }
+        }
+    }
+
+    &--grey {
+        background: color('grey');
+
+        .link {
+            @include state(hover) {
+                background: color('white', 0.64);
+            }
+        }
+    }
+
+    &--white {
+        background: color('white');
+
+        .link {
+            @include state(hover) {
+                background: color('grey', 0.64);
+            }
+        }
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Children
+     *
+     */
+
+    .link {
+        display: inline-flex;
+        min-width: 100%;
+        padding: link(spacer default);
+        white-space: nowrap;
+        z-index: 1;
+
+        // Rounded Vertical Border
+        &::after {
+            @include position(absolute, 0 null null 0);
+            border-color: inherit;
+            border-radius: 0 link(border radius) link(border radius) 0;
+            border-style: solid;
+            content: '';
+            display: none;
+
+            border-width: 0 link(border size default) 0 0;
+            height: 100%;
+            width: link(border size default);
+        }
+
+
+        // Modifiers
+        &--badge,
+        &--small {
+            &::after {
+                border-width: 0 link(border size small) 0 0;
+                width: link(border size small);
+            }
+        }
+
+        &--large {
+            &::after {
+                border-width: 0 link(border size large) 0 0;
+                width: link(border size large);
+            }
+        }
+
+        @each $size in 'badge' 'large' 'small' 'tab' {
+            &--#{$size} {
+                padding: link(spacer $size);
+            }
+        }
+
+
+        // Children
+        .icon {
+            @include margin-horizontal(link(spacer icon menu));
+        }
+
+        &-border {
+            margin: link(spacer menu) 0;
+        }
+
+        &-title + .link-border  {
+            margin-top: 0;
+        }
+
+        &-title {
+            margin: link(spacer default);
+            z-index: 0;
+
+            // Need To Handle Top Padding Of '.link-menu'
+            &:first-child {
+                margin-top: first(link(spacer default)) - link(spacer menu);
+
+                // Get Rid Of Text Crop
+                &::before {
+                    display: none;
+                }
+            }
+
+            @each $size in 'badge' 'large' 'small' 'tab' {
+                &--#{$size} {
+                    margin: link(spacer $size);
+
+                    &:first-child {
+                        margin-top: first(link(spacer $size)) - link(spacer menu);
+                    }
+                }
+            }
+        }
+
+        // Match Spacing Created By '.link-border' When It's Missing
+        & + .link-title {
+            margin-top: link(spacer menu) * 2;
+        }
+
+        // '.link-title' Should Be Slighlty Closer To Links
+        &-title + .link {
+            margin-top: - link(spacer menu);
+        }
+    }
+}

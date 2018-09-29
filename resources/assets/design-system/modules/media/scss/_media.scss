@@ -1,0 +1,106 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Videos
+ *
+ */
+
+
+@include module-function(media);
+
+
+.media {
+    @include grid(d12);
+    max-width: media(max-width);
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Children
+     *
+     */
+
+    &-thumbnail {
+        @include cursor(pointer);
+        @include grid(d12);
+        border-radius: border-radius(300);
+        overflow: hidden;
+
+        &-duration {
+            @include position(absolute, null 0 0 null);
+            @include truncate();
+            background: color('black' 500, 0.88);
+            border-radius: border-radius(300) 0 border-radius(300) 0;
+            color: color('white');
+            font-size: font-size(200);
+            font-weight: font-weight(300);
+            padding: size(100) (size(100) * 1.5);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        &-image {
+            @include aspect-ratio();
+            @include grid(d12);
+            background-color: color('black');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: 0;
+        }
+
+        &-play {
+            @include position(absolute, center);
+            @include transition(opacity transform);
+            z-index: 1;
+        }
+
+        @include state(default) {
+            .media-thumbnail-play {
+                opacity: 0;
+                transform: translate(50%, 50%) scale(0.64);
+            }
+        }
+    }
+
+    &-footer {
+        @include grid(d12);
+        padding: 0 size(200) 0 0;
+    }
+
+    &-title {
+        @include line-height((size() / font-size()), both);
+        @include transition(color);
+        clear: both;
+        color: color(text 500);
+        font-weight: font-weight(500);
+        margin: size(500) 0 size(300);
+        padding: 0;
+    }
+
+    &-creator {
+        @include truncate();
+        clear: both;
+        color: color(text 300);
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .info-group {
+        margin: (size(100) / 2) 0 0;
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Import Children/Modifiers
+     *
+     */
+
+    @import
+        'media-column',
+        'media-grid'
+    ;
+}

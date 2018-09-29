@@ -1,0 +1,40 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Contain Elements Within Max-Width Specified + Align
+ *
+ */
+
+
+@include module-function(container);
+
+
+.container {
+    @include position(relative, horizontal);
+    max-width: container(max-width default);
+    width: calc(100% - #{container(spacer default) * 2});
+    z-index: 1;
+
+    @include breakpoint(max-width, mobile) {
+        width: calc(100% - #{container(spacer mobile) * 2});
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Modifiers
+     *
+     */
+
+    // Remove Gutter On Mobile - Cleanup Free Space
+    &--mobile {
+        @include breakpoint(max-width, mobile) {
+            width: 100%;
+        }
+    }
+
+    &--small {
+        max-width: container(max-width small);
+    }
+}

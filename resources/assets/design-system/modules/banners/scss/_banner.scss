@@ -1,0 +1,59 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Banner
+ *
+ */
+
+
+@include module-function(banner);
+
+
+.banner {
+    @include grid(d12);
+    height: banner(height default);
+    overflow: hidden; 
+
+    &,
+    &-image {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Modifiers
+     *
+     */
+
+    &--fullscreen {
+        height: 100vh;
+        min-height: banner(height small);
+    }
+
+    &--small {
+        height: banner(height small);
+    }
+
+    &--top {
+        @include position(absolute, top);
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Children
+     *
+     */
+
+    &-image {
+        @include position(absolute, horizontal);
+        @include size(104vw, 100%);
+        top: 0;
+        z-index: -1;
+    }
+}

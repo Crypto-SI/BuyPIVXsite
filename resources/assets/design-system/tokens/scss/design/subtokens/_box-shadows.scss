@@ -1,0 +1,23 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Box-Shadow
+ *
+ */
+
+@include token-set(box-shadows, (
+    400: 0 2px 8px color('black', 0.024),
+    500: 0 4px 16px -12px color('black' 500, 0.24)
+));
+
+
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Functions
+ *
+ */
+
+@function box-shadow($key: token-weight(default)) {
+    @return token-get(box-shadows $key);
+}

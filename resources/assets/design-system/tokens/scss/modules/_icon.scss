@@ -1,0 +1,28 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Icons Module Configuration
+ *
+ */
+
+@include module-set(icon, (
+    spacer: (
+        // Left Spacer Of Floating Icon '.icon--float'
+        float: size(200),
+
+        // Bottom Spacer For '.icon--scroller'
+        scroller: size(200)
+    )
+));
+
+
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Functions
+ *
+ */
+
+@function icon($key) {
+    @return module-get(icon $key);
+}

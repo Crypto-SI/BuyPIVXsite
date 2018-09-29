@@ -1,0 +1,93 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Basic Image Icons
+ *
+ */
+
+
+@include module-function(icon);
+
+
+.icon {
+    @include float();
+    @include size(size());
+    color: inherit;
+    pointer-events: none;
+    transition: none;
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Modifiers
+     *
+     */
+
+    @include color-modifiers(color, join(color-keys(brand), 'black' 'grey' 'white' 'social'));
+
+
+    // Float Icon Outside Of Parent Element On Hover
+    &--float {
+        @include position(absolute, vertical);
+        @include transition(transform);
+        left: calc(100% + #{icon(spacer float)});
+
+        @include modifiers('.button' '.icon' '.link', '{r}:hover &') {
+            transform: translate((icon(spacer float) / 2), 50%);
+
+            &.icon--loop {
+                animation: icon-float-loop 0.9s infinite;
+            }
+        }
+
+        @keyframes icon-float-loop {
+            0%, 100% {
+                transform: translate(0, 50%);
+            }
+            50% {
+                transform: translate(icon(spacer float), 50%);
+            }
+        }
+    }
+
+
+    &--large {
+        @include size(size(500));
+        margin: (- size(100) / 2);
+    }
+
+    &--right {
+        float: right;
+    }
+
+    &--scroller {
+        float: right;
+        margin: 0 0 icon(spacer scroller);
+    }
+
+    &--snapchat {
+        color: color('black' 500);
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Children
+     *
+     */
+
+    &-image,
+    svg {
+        @include float();
+        @include size(100%);
+        overflow: visible;
+    }
+
+    svg {
+        color: currentColor;
+        fill: currentColor;
+        transform: translateZ(0);
+    }
+}

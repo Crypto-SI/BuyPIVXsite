@@ -1,0 +1,114 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Home
+ *
+ */
+
+.home {
+    &-header {
+        background-color: color('grey' 500);
+        background-position: bottom center;
+        background-size: cover;
+        padding: (size(800) * 3) 0;
+
+        @include breakpoint(max-width, mobile) {
+            padding: (size(800) * 2) 0;
+        }
+
+        .container {
+            max-width: 400px;
+        }
+
+
+        &-brand {
+            @include position(absolute, horizontal);
+            max-width: 160px;
+            top: size(600);
+            width: 100%;
+        }
+
+        &-subtitle {
+            @include grid(d12);
+            margin: (size(800) * 2) 0 0;
+            text-align: center;
+
+            b {
+                color: color('mue');
+            }
+        }
+
+
+        &-form {
+            @include grid(d12);
+            background: color('grey' 500);
+            border-radius: border-radius();
+            padding: size(600);
+        }
+
+        form {
+            margin: size(800) 0 0;
+        }
+
+        .field {
+            width: calc(50% - #{size()});
+
+            &:nth-child(even) {
+                float: right;
+            }
+
+            &-title {
+                b {
+                    color: color('mue');
+                }
+            }
+
+            &-mask {
+                -moz-appearance: textfield;
+                -webkit-appearance: textfield;
+            }
+
+            &-check--radio .field-mask {
+                margin-right: 0;
+            }
+        }
+
+        &-address.field {
+            margin: size(600) 0 size(800);
+            width: 100%;
+
+            .field-description {
+                width: 100%;
+            }
+        }
+
+        &-create {
+            float: right;
+        }
+
+        p {
+            margin: size(600) 0 0;
+        }
+
+        .button {
+            margin: size(800) 0 0;
+            width: 100%;
+        }
+    }
+
+    &-page {
+        margin: (size(800) * 3) 0 size(800);
+
+        @include breakpoint(max-width, mobile) {
+            margin: (size(800) * 2) 0 0;
+        }
+
+        h4 {
+            margin: size(800) 0 0;
+
+            + p {
+                margin: size(200) 0 0;
+            }
+        }
+    }
+}

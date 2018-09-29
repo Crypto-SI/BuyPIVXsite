@@ -1,0 +1,26 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Link Title Used By Various Link Groups
+ *
+ *  Import Within Link Stylesheet To Retain Class Inheritance
+ *
+ */
+
+&-title {
+    @include float();
+    @include font-size(font-size(), first-child);
+    clear: both;
+    color: color(text 500);
+    font-weight: font-weight(500);
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Modifiers
+     *
+     */
+
+    @include color-modifiers(color, join(color-keys(brand), 'black' 'grey' 'white'));
+}

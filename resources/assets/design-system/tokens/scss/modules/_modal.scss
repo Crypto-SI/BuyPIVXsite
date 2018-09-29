@@ -1,0 +1,25 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Modal Module Configuration
+ *
+ */
+
+@include module-set(modal, (
+    max-width: (
+        default: breakpoint(tablet width),
+        small: 480px
+    )
+));
+
+
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Functions
+ *
+ */
+
+@function modal($key) {
+    @return module-get(modal $key);
+}

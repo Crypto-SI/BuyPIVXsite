@@ -1,0 +1,51 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Main Content/Sidebar Elements
+ *
+ */
+
+
+@include module-function(sidebar);
+
+
+.content,
+.sidebar {
+    @include grid(d12);
+
+    &--right {
+        float: right;
+    }
+}
+
+@include breakpoint(min-width, mobile) {
+    .content,
+    .sidebar {
+        &--left {
+            padding: 0 sidebar(spacer) 0 0;
+        }
+        &--right {
+            padding: 0 0 0 sidebar(spacer);
+        }
+    }
+
+    .content {
+        width: calc(100% - #{sidebar(width default)});
+
+        &--full {
+            width: 100%;
+        }
+
+        &--large {
+            width: calc(100% - #{sidebar(width small)});
+        }
+    }
+
+    .sidebar {
+        width: sidebar(width default);
+
+        &--small {
+            width: sidebar(width small);
+        }
+    }
+}

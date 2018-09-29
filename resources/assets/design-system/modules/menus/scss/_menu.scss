@@ -1,0 +1,15 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Off Canvas Menu
+ *
+ */
+
+.menu {
+    @include transition(transform);
+    cursor: default;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 1;
+}

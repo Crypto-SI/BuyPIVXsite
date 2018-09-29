@@ -1,0 +1,42 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Media Module Configuration
+ *
+ */
+
+@include module-set(media, (
+
+    // Largest Version Of Media Element Shouldn't Exceed Value listed
+    max-width: 400px,
+
+    spacer: (
+        grid: (
+            // Top Margin Of Each Media Element
+            top: size(800),
+
+            // Spacer Between Each Media Grid Item
+            right: size(200)
+        ),
+
+        vertical: (
+            // Top Margin Of Each Media Element
+            top: size(),
+
+            // Spacer Between Media Details And Thumbnail
+            left: size(300)
+        )
+    )
+));
+
+
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Functions
+ *
+ */
+
+@function media($key) {
+    @return module-get(media $key);
+}

@@ -1,0 +1,53 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Commonly Used Margin Spacers
+ *
+ */
+
+@include token-set(margin, (
+
+    // Set Left/Right Margin For First/Last Child
+    horizontal: size(100) / 2,
+
+    // Vertical Margin For Text Based Elements Like <p>, <ol>, <ul>, <li>
+    text: (
+        200: size(100),
+
+        // Nested Text Elements
+        300: size(200),
+
+        // Default
+        400: size()
+    )
+));
+
+
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Functions
+ *
+ */
+
+@function margin-text($key: token-weight(default)) {
+    @return token-get(margin text $key);
+}
+
+
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Mixins
+ *
+ */
+
+@mixin margin-horizontal($margin: token-get(margin horizontal)) {
+    &:first-child {
+        margin-right: $margin;
+    }
+
+    &:not(:first-child):last-child {
+        margin-left: $margin;
+    }
+}

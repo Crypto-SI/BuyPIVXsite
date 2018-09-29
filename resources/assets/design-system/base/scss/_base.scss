@@ -1,0 +1,149 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Base/Root Stylesheet
+ *
+ */
+
+html, body {
+    @include grid(d12);
+    height: 100%;
+}
+
+html {
+    color: color(text);
+    font-size: font-size();
+    font-weight: font-weight();
+    line-height: line-height();
+    min-width: 300px;
+    overflow-x: hidden;
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+
+    @if base(html css) {
+        @each $property, $value in base(html css) {
+            #{$property}: #{$value};
+        }
+    }
+
+
+    // Global Box Element Properties
+    *,
+    *::after,
+    *::before {
+        box-sizing: border-box;
+        transition: inherit;
+    }
+
+    // States
+    &.noscroll {
+        overflow: hidden;
+    }
+}
+
+a {
+    @include cursor(pointer);
+    color: color(text);
+    outline: none;
+    text-decoration: none;
+}
+
+b,
+strong {
+    color: color(text 500);
+    font-weight: font-weight(500);
+}
+
+section {
+    @include grid(d12);
+}
+
+sub {
+    bottom: -0.48em;
+    font-size: 0.8em;
+    font-weight: font-weight(600);
+}
+
+sup {
+    font-size: 0.8em;
+    font-weight: font-weight(600);
+    top: -0.48em;
+}
+
+
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Normalize Form Elements
+ *
+ */
+
+form {
+    @include grid(d12);
+    margin: 0;
+    padding: 0;
+}
+
+input,
+button,
+select,
+textarea {
+    background: transparent;
+    border-radius: 0;
+    border: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    outline: none;
+}
+
+
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Headings
+ *
+ */
+
+h1, h2, h3, h4 {
+    @include grid(d12);
+    color: color(text 500);
+    font-weight: font-weight(500);
+    margin: 0;
+    padding: 0;
+
+    sub,
+    sup {
+        font-size: 0.64em;
+    }
+}
+
+// Loop Through Font Size Keys To Set Header Font Size + Line Height
+$i: last( font-size-keys() );
+
+@each $h in h1 h2 h3 h4 {
+    #{$h} {
+        @include font-size(font-size($i), first-child last-child);
+    }
+
+    $i: $i - token-weight(difference);
+}
+
+
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Body Text
+ *
+ */
+
+p {
+    @include grid(d12);
+
+    &:not(:first-child) {
+        margin: margin-text() 0 0;
+    }
+}

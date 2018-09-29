@@ -1,0 +1,58 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Modals Container
+ *
+ */
+
+.modals {
+    @include position(fixed, full);
+    @include transition(opacity);
+    background: color('black', 0.8);
+    cursor: pointer;
+    overflow-x: hidden;
+    overflow-y: auto;
+    z-index: 8;
+
+
+    @include state(not-active) {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Modifiers
+     *
+     */
+
+    &--grey {
+        background: color('grey', 0.92);
+    }
+
+    &--transparent {
+        background: transparent;
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Children
+     *
+     */
+
+    &-close {
+        @include position(absolute, size(100) size(100) null null);
+        color: color('white');
+        pointer-events: none;
+        z-index: 0;
+
+        // Modifiers
+        .modals--grey & {
+            color: color(text 500);
+        }
+    }
+}

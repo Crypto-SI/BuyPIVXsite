@@ -1,0 +1,35 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Page Header Module Configuration
+ *
+ */
+
+@include module-set(page-header, (
+    spacer: (
+        // Bottom Spacer On '.button-group:first-child'
+        // Top Spacer On '.button-group:last-child'
+        button-group: size(600),
+
+        // Bottom Spacer Of '.page-header-category'
+        category: (
+            default: size(600),
+            small: size()
+        ),
+
+        // Top Spacer Of '.page-header-subtitle'
+        subtitle: size(200)
+    )
+));
+
+
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Functions
+ *
+ */
+
+@function page-header($key) {
+    @return module-get(page-header $key);
+}

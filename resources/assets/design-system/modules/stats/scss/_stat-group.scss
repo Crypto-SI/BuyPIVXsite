@@ -1,0 +1,13 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Stat Group
+ *
+ *  Import Within Stat Stylesheet To Retain Class Inheritance
+ *
+ */
+
+&-group {
+    @include grid(d12);
+}
+ 

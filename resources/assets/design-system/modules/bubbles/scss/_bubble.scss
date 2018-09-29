@@ -1,0 +1,21 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Bubble
+ *
+ */
+
+.bubble {
+    @include circle(size(300));
+    border: 2px solid color('grey');
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Modifiers
+     *
+     */
+
+    @include color-modifiers(background-color, join(color-keys(brand), 'black' 'grey' 'white'));
+}

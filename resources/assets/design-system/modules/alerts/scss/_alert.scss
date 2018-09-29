@@ -1,0 +1,64 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Alert Notifications
+ *
+ */
+
+.alert {
+    @include box();
+    @include position(absolute, size() size() null null);
+    @include transition(opacity transform);
+    border-left: size(100) solid transparent;
+    border-radius: 0 border-radius() border-radius() 0;
+    max-height: calc(100% - #{size(800)});
+    padding: size() size() size() 0;
+    pointer-events: all;
+    width: size(800) * 10;  
+
+    @include state(not-active) {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-50%);
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Modifiers
+     *
+     */
+
+    &--error {
+        border-color: color(primary);
+    }
+
+    &--success {
+        border-color: color('green');
+    }
+
+    &--info {
+        border-color: color(secondary);
+    }
+
+
+    /**
+     *--------------------------------------------------------------------------
+     *
+     *  Children
+     *
+     */
+
+    &-title {
+        @include grid(d12);
+        @include uppercase();
+        color: color(text 500);
+        padding: 0 0 0 size();
+    }
+
+    &-close.button {
+        float: right;
+        margin: size(200) 0 0;
+    }
+}

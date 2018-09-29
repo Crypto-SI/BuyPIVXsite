@@ -1,0 +1,23 @@
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Card Module Configuration
+ *
+ */
+
+@include module-set(card, (
+    // Spacer Between Each Card
+    spacer: size(200)
+));
+
+
+/**
+ *------------------------------------------------------------------------------
+ *
+ *  Functions
+ *
+ */
+
+@function card($key) {
+    @return module-get(card $key);
+}
